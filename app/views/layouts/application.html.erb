@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookers</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,600,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+            <nav class="menu">
+                <ul class ="slide-menu">
+                <h2 class="nav-title">Bookers</h2>
+                  <% if user_signed_in? %>
+                      <li class=nav-link>
+                          <%= link_to "Home", books_path %>
+                      </li>
+                      <li class=nav-link>
+                          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                      </li>
+                  <% else %>
+                      <li class=nav-link>
+                          <%= link_to "Home", books_path %>
+                      </li>
+                      <li class=nav-link>
+                          <%= link_to "sign up", new_user_registration_path %>
+                      </li>
+                      <li class=nav-link>
+                          <%= link_to "login", new_user_session_path %>
+                      </li>
+                  <% end %>
+                </ul>
+            </nav>
+    <%= yield %>
+  </body>
+</html>
